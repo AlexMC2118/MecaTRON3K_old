@@ -119,8 +119,37 @@ class Vista{
 **/
 class Modelo{
   constructor(){
-      this.palabras = ['En', 'un', 'lugar', 'de', 'La', 'Mancha']
+      //Desarrollamos el array bidimensional
+      this.palabras= new Array(3);
+      this.palabras[0] = new Array(8);
+      this.palabras[1] = new Array(7);
+      this.palabras[2] = new Array(5);
+
+      this.palabras[0][0]="ju";
+      this.palabras[0][1]="fr";
+      this.palabras[0][2]="fv";
+      this.palabras[0][3]="jm";
+      this.palabras[0][4]="fu";
+      this.palabras[0][5]="jr";
+      this.palabras[0][6]="jv";
+      this.palabras[0][7]="fm";
+
+      this.palabras[1][0]="fre";
+      this.palabras[1][1]="jui";
+      this.palabras[1][2]="fui";
+      this.palabras[1][3]="vie";
+      this.palabras[1][4]="mi";
+      this.palabras[1][5]="mery";
+      this.palabras[1][6]="huy";
+
+      this.palabras[2][0]="juan";
+      this.palabras[2][1]="remo";
+      this.palabras[2][2]="foca";
+      this.palabras[2][3]="dedo";
+      this.palabras[2][4]="cate";
+
       this.puntuacion = 0;
+      this.nivel = 0;
   }
   /**
     Devuelve una nueva palabra.
@@ -129,10 +158,14 @@ class Modelo{
   **/
   sumarPunto(puntos){
     this.puntuacion += parseFloat([Math.floor(puntos)]);
+    if(this.nivel<2 && this.puntuacion -10 >= 0){
+      this.nivel = Math.floor(this.puntuacion/10);
+    }
     console.log(this.puntuacion)
   }
   crearPalabra(){
-    return this.palabras[Math.floor(Math.random() * this.palabras.length)]
+    //Agregamos [this.nivel] para entrar en el array bidimensional
+    return this.palabras[this.nivel][Math.floor(Math.random() * this.palabras.length)]
   }
 }
 
