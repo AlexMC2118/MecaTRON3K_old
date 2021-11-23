@@ -61,7 +61,7 @@ class Juego{
         //Si ha completado la palabra, la elimino y sumo puntos
         if (nodoTexto.nodeValue.length == 0){
           palabra.remove()
-          this.modelo.sumarPunto()
+          this.modelo.sumarPunto(span.textContent.length)
         }
       }
       else{
@@ -120,12 +120,17 @@ class Vista{
 class Modelo{
   constructor(){
       this.palabras = ['En', 'un', 'lugar', 'de', 'La', 'Mancha']
+      this.puntuacion = 0;
   }
   /**
     Devuelve una nueva palabra.
     Devuelve aleatoriamente unn elemento del array de palabras.
     @return {String} Palabra generada
   **/
+  sumarPunto(puntos){
+    this.puntuacion += parseFloat([Math.floor(puntos)]);
+    console.log(this.puntuacion)
+  }
   crearPalabra(){
     return this.palabras[Math.floor(Math.random() * this.palabras.length)]
   }
