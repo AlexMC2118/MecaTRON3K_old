@@ -156,10 +156,16 @@ class Modelo{
     Devuelve aleatoriamente unn elemento del array de palabras.
     @return {String} Palabra generada
   **/
+  subirnivel(){
+    this.nivel = Math.floor(this.puntuacion/10);
+  }
+  bajarnivel(){
+    this.nivel--;
+  }
   sumarPunto(puntos){
     this.puntuacion += parseFloat([Math.floor(puntos)]);
     if(this.nivel<2 && this.puntuacion -10 >= 0){
-      this.nivel = Math.floor(this.puntuacion/10);
+      this.subirnivel();
     }
     console.log(this.puntuacion)
   }
